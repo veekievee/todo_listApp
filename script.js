@@ -1,4 +1,4 @@
-document.addEventListener("DOMcontentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   console.log("hello world");
   const form = document.querySelector("form");
   const input = form.querySelector("input");
@@ -15,7 +15,7 @@ document.addEventListener("DOMcontentLoaded", () => {
 
   function createTodoItem(text) {
     const li = document.createElement("li");
-    li.textContent = Text;
+    li.textContent = text +  "";
 
     const delBtn = document.createElement("span");
     delBtn.textContent = "🗑️";
@@ -35,24 +35,25 @@ document.addEventListener("DOMcontentLoaded", () => {
     e.preventDefault();
     const value = input.value.trim();
     if (value) {
+      alert(`you added: ${value}`);
       createTodoItem(value);
       input.value = "";
     }
   });
 
   clearBtn.addEventListener("click", () => {
-    todoList.innerHTML = "";
-    updateTaskCount();
+   todoList.innerHTML= "";
+   updateTaskCount();
   });
 
-  document.querySelectorAll(".todo-list li").forEach(li => {
+  document.querySelectorAll(".todo-list li").forEach((li) =>{
     const delBtn = li.querySelector(".delete");
-    if (delBtn) {
-      delBtn.addEventListener("click", () => {
+    if(delBtn) {
+      delBtn.addEventListener("click", () =>{
         li.remove();
         updateTaskCount();
       });
     }
-  });
+  })
   updateTaskCount();
 });
